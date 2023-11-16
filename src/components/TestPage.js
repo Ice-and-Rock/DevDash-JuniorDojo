@@ -1,6 +1,6 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import Quiz from './Test'; 
+import React from "react";
+import { useParams } from "react-router-dom";
+import Quiz from "./Test";
 
 const TestPage = () => {
   const { subject } = useParams();

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
@@ -7,10 +7,18 @@ const HomePage = () => {
       <h1>Welcome to Your Quiz App</h1>
       <p>Choose your topic:</p>
       <ul>
-        <li><Link to="/test/react">React</Link></li>
-        <li><Link to="/test/javascript">Javascript</Link></li>
-        <li><Link to="/test/css">CSS</Link></li>
-        <li><Link to="/test/sql">SQL</Link></li>
+        <li>
+          <Link to="/test/react">React</Link>
+        </li>
+        <li>
+          <Link to="/test/javascript">Javascript</Link>
+        </li>
+        <li>
+          <Link to="/test/css">CSS</Link>
+        </li>
+        <li>
+          <Link to="/test/sql">SQL</Link>
+        </li>
       </ul>
     </div>
   );

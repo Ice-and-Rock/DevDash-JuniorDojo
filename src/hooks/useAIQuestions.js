@@ -1,44 +1,51 @@
-import { useState, useEffect } from 'react';
-import OpenAI from 'openai';
+import { useState, useEffect } from "react";
+import OpenAI from "openai";
 
-const openAIKey2 = process.env.OPEN_AI_KEY;
-const openAIKey = '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';
-// const openAIUrl = import.meta.env.OPEN_AI_URL;
-
-// THE BELOW SCRIPT IS BAD
-const openai = new OpenAI({apiKey: openAIKey, dangerouslyAllowBrowser: true});
+const openAIKey = "";
+// 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**;
 
 const useAIQuestions = () => {
+  // const openAIKey1 = import.meta.env.REACT_APP_OPEN_AI_KEY;
+  const openAIKey2 = process.env.REACT_APP_OPENAI_API_KEY;
+  const openai = new OpenAI({
+    apiKey: openAIKey2,
+    dangerouslyAllowBrowser: true,
+  });
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
+    console.log("useEffect running");
     const fetchQuestions = async () => {
       try {
         const chatCompletion = await openai.chat.completions.create({
-          model: 'gpt-3.5-turbo',
+          model: "gpt-3.5-turbo",
           messages: [
             // {
             //   role: 'system',
             //   content: 'You are a helpful assistant.',
             // },
             {
-              role: 'system',
+              role: "system",
               content:
                 'generate 10 javascript interview questions for a junior full stack developer with answers. include incorrect answers, format the response as a JSON questions object in the shape of: [{"question": "What is the primary purpose of the \'map\' function in JavaScript?", "answers": {"correct": "Transforms each element of an array and returns a new array.", "incorrect": ["Adds a new element to the end of the array.", "Removes the first element from the array.", "Concatenates two arrays into a single array."]}}]',
             },
           ],
         });
+        console.log(
+          "1. online specific prompt:",
+          chatCompletion.choices[0].message
+        );
 
-        console.log('questions:', chatCompletion);
+        console.log("2. questions:", chatCompletion);
         // Assuming the API response has a 'choices' property with the questions
         setQuestions(chatCompletion.choices);
       } catch (error) {
-        console.error('Error fetching questions:', error);
+        console.error("Error fetching questions:", error);
       }
     };
 
     fetchQuestions();
-  }, []); 
+  }, []);
 
   return questions;
 };

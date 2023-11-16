@@ -18,9 +18,9 @@ const Quiz = ({ subject }) => {
       {currentQuestion ? (
         <div>
           <p>{currentQuestion}</p>
-          {/* Assuming options are included in the question data */}
+          
           <ul>
-            {currentQuestion.options.map((option, index) => (
+            {currentQuestion.answers.map((option, index) => (
               <li key={index} onClick={() => handleAnswerClick(option)}>
                 {option}
               </li>
