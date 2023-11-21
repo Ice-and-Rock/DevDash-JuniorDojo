@@ -31,21 +31,23 @@ app.use(cors());
 app.use(express.json());
 
 
-app.post("/api", async (req, res) => {
+app.post("/api/openai", async (req, res) => {
     const params = {
-        "prompt" : req.body.prompt, 
-        'max_tokens': 60,
+        "messages": req.body.messages, 
+        'model': 'gpt-3.5-turbo-1106',
+        'response_format': {'type': 'json_object'}
     };
-    const api_url = "https://api.openai.com/v4/engines/davinci-codex/completions";
+    const api_url = "https://api.openai.com/v1/chat/completions";
     const headers =  {
-        'Authorization': openAIKey2,
+        'Authorization': `Bearer ${openAIKey2}`,
         'Content-Type': 'application/json',
-    }
+    };
     try {
         const response = await axios.post(api_url, params, {headers: headers});
-        res.json(response.data.choices[0].text);
+        res.json(response.data.choices[0].message.content);
     } catch (error) {
-        res.json({error})
+        console.error("Error handling OpenAI request:", error.message);
+        res.status(500).json({ error: "Internal Server Error", detailedError: error.message });
     }
   });
   

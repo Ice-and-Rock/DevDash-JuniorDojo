@@ -15,7 +15,9 @@ const OpenAIChat = () => {
             role: "system",
             content: "You are a helpful assistant designed to output JSON.",
           },
-          { role: "user", content: "Can you tell me how cool i am?" },
+          { role: "user", content: 
+             'generate 10 javascript interview questions for a junior full stack developer with answers. include incorrect answers, format the response as a JSON questions object in the shape of: [{"question": "What is the primary purpose of the \'map\' function in JavaScript?", "answers": {"correct": "Transforms each element of an array and returns a new array.", "incorrect": ["Adds a new element to the end of the array.", "Removes the first element from the array.", "Concatenates two arrays into a single array."]}}]',
+    },
         ],
         model: "gpt-3.5-turbo-1106",
         response_format: { type: "json_object" },
@@ -34,9 +36,7 @@ const OpenAIChat = () => {
       ) : (
         <p>Loading...</p>
       )}
-      <div>
-      {response}
-      </div>
+     
     </div>
   );
 };
