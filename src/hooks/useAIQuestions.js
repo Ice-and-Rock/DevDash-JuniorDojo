@@ -5,13 +5,14 @@ const openAIKey = "";
 // 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**;
 
 const useAIQuestions = () => {
-  // const openAIKey1 = import.meta.env.REACT_APP_OPEN_AI_KEY;
   const openAIKey2 = process.env.REACT_APP_OPENAI_API_KEY;
-  const openai = new OpenAI({
-    apiKey: openAIKey2,
-    dangerouslyAllowBrowser: true,
-  });
+  // const openai = new OpenAI({
+  //   apiKey: openAIKey2,
+  //   dangerouslyAllowBrowser: true,
+  // });
   const [questions, setQuestions] = useState([]);
+
+  // console.log("OpenAI Object:", openai);
 
   useEffect(() => {
     console.log("useEffect running");
@@ -36,24 +37,29 @@ const useAIQuestions = () => {
       //     chatCompletion.choices[0].message
       //   );
 
-        try {
-          const response = await fetch('http://localhost:3001/openai/chat/completions', {
-            method: 'POST',
+      try {
+        const response = await fetch(
+          "http://localhost:3001/openai/chat/completions",
+          {
+            method: "POST",
             headers: {
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json",
             },
             body: JSON.stringify({
               model: "gpt-3.5-turbo",
               messages: [
-                {role: "system",
-                    content:
-                'can you say hello to me?'
-              }
+                { role: "system", content: "You are a helpful assistant." },
+                { role: "user", content: "Who won the world series in 2020?" }
               ],
             }),
-          });
-  
-          const chatCompletion = await response.json();
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const chatCompletion = await response.json();
+        console.log("API response:", chatCompletion);
 
         console.log("2. questions:", chatCompletion);
         // Assuming the API response has a 'choices' property with the questions

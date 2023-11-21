@@ -1,5 +1,9 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
+import OpenAIChat from "../openAI/OpenAIChat";
+
+import { Example } from "./Example";
 
 const HomePage = () => {
   return (
@@ -20,6 +24,10 @@ const HomePage = () => {
           <Link to="/test/sql">SQL</Link>
         </li>
       </ul>
+      {/* <Example /> */}
+    <div>
+      <OpenAIChat />
+    </div>
     </div>
   );
 };

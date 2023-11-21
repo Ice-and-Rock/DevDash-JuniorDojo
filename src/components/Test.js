@@ -3,19 +3,21 @@ import useOpenAIQuestions from '../hooks/useAIQuestions';
 
 const Quiz = ({ subject }) => {
   const questions = useOpenAIQuestions();
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  // const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-  const handleAnswerClick = (selectedAnswer) => {
-    // Handle user's answer logic
-    // For example, move to the next question
-    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-  };
+  // const handleAnswerClick = (selectedAnswer) => {
+  //   // Handle user's answer logic
+  //   // For example, move to the next question
+  //   setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+  // };
 
-  const currentQuestion = questions[currentQuestionIndex];
+  // const currentQuestion = questions[currentQuestionIndex];
 
   return (
     <div>
-      {currentQuestion ? (
+    <div>here are the questions:</div>
+  <div>{questions}</div>
+      {/* {currentQuestion ? (
         <div>
           <p>{currentQuestion}</p>
           
@@ -31,7 +33,7 @@ const Quiz = ({ subject }) => {
         <div>
           <p>Quiz completed!</p>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
