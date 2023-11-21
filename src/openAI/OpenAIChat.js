@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import OpenAI from 'openai';
 
 const OpenAIChat = () => {
-  const [response, setResponse] = useState(null);
+  const [responseData, setResponseData] = useState(null);
   const openAIKey2 = process.env.REACT_APP_OPENAI_API_KEY;
 
   useEffect(() => {
     const openai = new OpenAI({ apiKey: openAIKey2, dangerouslyAllowBrowser: true, });
     
     const fetchData = async () => {
+      try {
       const completion = await openai.chat.completions.create({
         messages: [
           {
@@ -22,17 +23,34 @@ const OpenAIChat = () => {
         model: "gpt-3.5-turbo-1106",
         response_format: { type: "json_object" },
       });
-      console.log(completion.choices[0].message.content);
-      setResponse(completion.choices[0].message.content) 
+      const responseData = JSON.parse(completion.choices[0].message.content);
+      console.log(responseData);
+      // console.log(completion.choices[0].message.content);
+      setResponseData(responseData) 
+    } catch (error) {
+      console.error("Error fetching data:", error);
     }
-
+  };
     fetchData();
   }, []); // Empty dependency array to run the effect only once on component mount
 
   return (
     <div>
-      {response ? (
-        <p>{response}</p>
+      {responseData ? (
+        <div>
+          <h1>Interview Questions</h1>
+          <ul>
+            {responseData.questions.map((question, index) => (
+              <li key={index}>
+                <p>{question.question}</p>
+                <ul>
+                  <li>Correct: {question.answers.correct}</li>
+                  <li>Incorrect: {question.answers.incorrect.join(', ')}</li>
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
       ) : (
         <p>Loading...</p>
       )}
