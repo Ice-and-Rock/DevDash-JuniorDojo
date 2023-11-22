@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import useOpenAIQuestions from '../hooks/useAIQuestions';
+// import useOpenAIQuestions from '../hooks/useAIQuestions';
+import useOpenAIChat from '../openAI/useOpenAIChat';
 
-const Quiz = ({ subject }) => {
-  const questions = useOpenAIQuestions();
-  // const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+const Test = ({ subject }) => {
+  const [responseData, loading] = useOpenAIChat(subject);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   // const handleAnswerClick = (selectedAnswer) => {
   //   // Handle user's answer logic
@@ -11,31 +12,32 @@ const Quiz = ({ subject }) => {
   //   setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
   // };
 
-  // const currentQuestion = questions[currentQuestionIndex];
+  const currentQuestion = responseData[currentQuestionIndex];
 
   return (
     <div>
-    <div>here are the questions:</div>
-  <div>{questions}</div>
-      {/* {currentQuestion ? (
-        <div>
-          <p>{currentQuestion}</p>
-          
-          <ul>
-            {currentQuestion.answers.map((option, index) => (
-              <li key={index} onClick={() => handleAnswerClick(option)}>
-                {option}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : (
-        <div>
-          <p>Quiz completed!</p>
-        </div>
-      )} */}
-    </div>
+    {loading ? (
+      <p>Loading...</p>
+    ) : responseData && responseData.questions ? (
+      <div>
+        <h1>Interview Questions for {subject}</h1>
+        <ul>
+          {responseData.questions.map((question, index) => (
+            <li key={index}>
+              <p>{question.question}</p>
+              <ul>
+                <li>Correct: {question.answers.correct}</li>
+                <li>Incorrect: {question.answers.incorrect.join(', ')}</li>
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ) : (
+      <p>No data available</p>
+    )}
+  </div>
   );
 };
 
-export default Quiz;
+export default Test;

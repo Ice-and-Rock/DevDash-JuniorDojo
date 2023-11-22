@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Quiz from "./Test";
+import Test from "./Test";
 
 const TestPage = () => {
   const { subject } = useParams();
@@ -8,7 +8,7 @@ const TestPage = () => {
   return (
     <div>
       <h1>{subject.toUpperCase()} Quiz</h1>
-      <Quiz subject={subject} />
+      <Test subject={subject} />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import OpenAIChat from "../openAI/OpenAIChat";
+import OpenAIChat from "../openAI/useOpenAIChat";
 
 import { Example } from "./Example";
 
