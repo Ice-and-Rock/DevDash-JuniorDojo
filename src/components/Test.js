@@ -1,18 +1,27 @@
 import React, { useState } from "react";
-import dummyData from '../data/dummyData.json'
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import dummyData from "../data/dummyData.json";
+import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Stack from "react-bootstrap/Stack";
+import Card from "react-bootstrap/Card";
+import Spinner from "react-bootstrap/Spinner";
 // import useOpenAIQuestions from '../hooks/useAIQuestions';
 // import useOpenAIChat from "../openAI/useOpenAIChat";
 
 const Test = ({ subject }) => {
-
   // IMPORTANT ❗️
-    // Below is the API fetch
-      // Disabled for now ⛔️
+  // Below is the API fetch
+  // Disabled for now ⛔️
   // const [responseData, loading] = useOpenAIChat(subject);
   // const responseData = '../../data/dummyData.json'
-  const [responseData, setResponseData] = useState(dummyData)
-  const [loading, setLoading] = useState(null)
-  
+  const [responseData, setResponseData] = useState(dummyData);
+  const [loading, setLoading] = useState(null);
+
   // const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   // const handleAnswerClick = (selectedAnswer) => {
@@ -26,39 +35,37 @@ const Test = ({ subject }) => {
   return (
     <div>
       {loading ? (
-        <p>Loading...</p>
+        <div>
+          <p>Loading...</p>
+          <Spinner animation="border" size="lg" />
+        </div>
       ) : responseData && responseData.questions ? (
         <div>
-          <h1>Interview Questions for {subject}</h1>
-          <p>Test Question: {responseData.questions[0].question}</p>
-
-          <div>
-            <h1>Interview Questions for {subject}</h1>
-            <ul>
+          <div className="Bootstrap render">
+            <Container className="m-6 p-6">
               {responseData.questions.map((questionData, index) => (
-                <li key={index}>
-                  <p>{questionData.question}</p>
-                  <ul>
+                <Card key={index}>
+                  <Card.Title>{questionData.question}</Card.Title>
+
+                  <div className="d-grid gap-2">
                     {/* <li>Correct: {questionData.answers.correct}</li> */}
                     {/* <li>Incorrect: {questionData.answers.incorrect.join(', ')}</li> */}
-                    <div>
-                      Mapped list of CORRECT answers:
-                      <li>{questionData.answers.correct}</li>
-                    </div>
-                    <div>
-                      Mapped list of INCORRECT answrs:
-                      <ul>
-                        {questionData.answers.incorrect.map(
-                          (incorrectAnswer, index) => (
-                            <li key={index}>{incorrectAnswer}</li>
-                          )
-                        )}
-                      </ul>
-                    </div>
-                  </ul>
-                </li>
+
+                    <Button variant="primary" size="lg">
+                      {questionData.answers.correct}
+                    </Button>
+
+                    {questionData.answers.incorrect.map(
+                      (incorrectAnswer, index) => (
+                        <Button variant="primary" size="lg" key={index}>
+                          {incorrectAnswer}
+                        </Button>
+                      )
+                    )}
+                  </div>
+                </Card>
               ))}
-            </ul>
+            </Container>
           </div>
         </div>
       ) : (
