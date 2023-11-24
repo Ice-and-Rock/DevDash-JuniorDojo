@@ -4,7 +4,7 @@ import useOpenAIChat from '../openAI/useOpenAIChat';
 
 const Test = ({ subject }) => {
   const [responseData, loading] = useOpenAIChat(subject);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  // const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   // const handleAnswerClick = (selectedAnswer) => {
   //   // Handle user's answer logic
@@ -12,7 +12,7 @@ const Test = ({ subject }) => {
   //   setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
   // };
 
-  const currentQuestion = responseData[currentQuestionIndex];
+  // const currentQuestion = responseData[currentQuestionIndex];
 
   return (
     <div>
@@ -21,7 +21,24 @@ const Test = ({ subject }) => {
     ) : responseData && responseData.questions ? (
       <div>
         <h1>Interview Questions for {subject}</h1>
-        <ul>
+        <p>Test Question: {responseData.questions[0].question}</p>
+
+
+        <div>
+          <h1>Interview Questions for {subject}</h1>
+          <ul>
+            {responseData.questions.map((questionData, index) => (
+              <li key={index}>
+                <p>{questionData.question}</p>
+                <ul>
+                  <li>Correct: {questionData.answers.correct}</li>
+                  <li>Incorrect: {questionData.answers.incorrect.join(', ')}</li>
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
+        {/* <ul>
           {responseData.questions.map((question, index) => (
             <li key={index}>
               <p>{question.question}</p>
@@ -31,7 +48,7 @@ const Test = ({ subject }) => {
               </ul>
             </li>
           ))}
-        </ul>
+        </ul> */}
       </div>
     ) : (
       <p>No data available</p>
@@ -41,3 +58,5 @@ const Test = ({ subject }) => {
 };
 
 export default Test;
+
+
