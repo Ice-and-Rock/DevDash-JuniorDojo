@@ -1,0 +1,115 @@
+{
+    "questions": [
+      {
+        "question": "What is the primary purpose of the 'map' function in JavaScript?",
+        "answers": {
+          "correct": "Transforms each element of an array and returns a new array.",
+          "incorrect": [
+            "Adds a new element to the end of the array.",
+            "Removes the first element from the array.",
+            "Concatenates two arrays into a single array."
+          ]
+        }
+      },
+      {
+        "question": "Explain the concept of JSX in React.",
+        "answers": {
+          "correct": "JSX is a syntax extension for JavaScript, allowing the writing of HTML within JavaScript.",
+          "incorrect": [
+            "JSX is a separate programming language used for styling components.",
+            "JSX is a built-in React function for handling state management.",
+            "JSX is a JavaScript library for interacting with APIs."
+          ]
+        }
+      },
+      {
+        "question": "What is the purpose of state in React?",
+        "answers": {
+          "correct": "State is used to store and manage component-specific data that can change over time.",
+          "incorrect": [
+            "State is only used for static data that never changes.",
+            "State is used to handle global application data.",
+            "React components cannot have state."
+          ]
+        }
+      },
+      {
+        "question": "What is the significance of useEffect in React?",
+        "answers": {
+          "correct": "useEffect is a hook in React used for performing side effects in functional components.",
+          "incorrect": [
+            "useEffect is only used for handling mouse events in React.",
+            "React components should never use useEffect.",
+            "useEffect is used for defining the initial state of a component."
+          ]
+        }
+      },
+      {
+        "question": "How does React Router help in navigation in a React-based application?",
+        "answers": {
+          "correct": "React Router provides navigation and rendering for a React application with dynamic, client-side routing.",
+          "incorrect": [
+            "React Router is only used for server-side navigation.",
+            "React Router is not suitable for handling navigation in React applications.",
+            "React applications don't need navigation."
+          ]
+        }
+      },
+      {
+        "question": "Explain the concept of props in React.",
+        "answers": {
+          "correct": "Props are short for properties and are used to pass data from one component to another in React.",
+          "incorrect": [
+            "Props can only be used in class components, not functional components.",
+            "Props are used for styling components in React.",
+            "React components cannot receive data from other components."
+          ]
+        }
+      },
+      {
+        "question": "What is the significance of the virtual DOM in React?",
+        "answers": {
+          "correct": "The virtual DOM is a lightweight copy of the real DOM that React uses to improve rendering performance.",
+          "incorrect": [
+            "The virtual DOM is not used in React.",
+            "The virtual DOM is an alternative to HTML in React applications.",
+            "React components directly modify the real DOM for rendering."
+          ]
+        }
+      },
+      {
+        "question": "How can you optimize performance in a React application?",
+        "answers": {
+          "correct": "Performance in a React application can be optimized by using techniques like code splitting, lazy loading, and memoization.",
+          "incorrect": [
+            "Optimizing performance is not important in React applications.",
+            "React applications are automatically optimized for performance.",
+            "Performance optimization is only relevant in large-scale applications."
+          ]
+        }
+      },
+      {
+        "question": "Explain the concept of hooks in React.",
+        "answers": {
+          "correct": "Hooks are functions that allow functional components to use state and lifecycle features in React.",
+          "incorrect": [
+            "Hooks are only used in class components.",
+            "Functional components cannot use hooks in React.",
+            "Hooks are only used for styling in React applications."
+          ]
+        }
+      },
+      {
+        "question": "What is the purpose of the 'key' attribute in React lists?",
+        "answers": {
+          "correct": "The 'key' attribute is used to give a unique identity to each element in a list, helping React identify which items have changed, been added, or been removed.",
+          "incorrect": [
+            "The 'key' attribute is not used in React lists.",
+            "The 'key' attribute is only used for styling elements in React.",
+            "React automatically assigns keys to list elements."
+          ]
+        }
+      }
+    ]
+  }
+  
