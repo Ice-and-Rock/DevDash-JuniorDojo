@@ -1,9 +1,18 @@
 import React, { useState } from "react";
+import dummyData from '../data/dummyData.json'
 // import useOpenAIQuestions from '../hooks/useAIQuestions';
-import useOpenAIChat from "../openAI/useOpenAIChat";
+// import useOpenAIChat from "../openAI/useOpenAIChat";
 
 const Test = ({ subject }) => {
-  const [responseData, loading] = useOpenAIChat(subject);
+
+  // IMPORTANT ❗️
+    // Below is the API fetch
+      // Disabled for now ⛔️
+  // const [responseData, loading] = useOpenAIChat(subject);
+  // const responseData = '../../data/dummyData.json'
+  const [responseData, setResponseData] = useState(dummyData)
+  const [loading, setLoading] = useState(null)
+  
   // const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   // const handleAnswerClick = (selectedAnswer) => {
@@ -32,11 +41,11 @@ const Test = ({ subject }) => {
                   <ul>
                     {/* <li>Correct: {questionData.answers.correct}</li> */}
                     {/* <li>Incorrect: {questionData.answers.incorrect.join(', ')}</li> */}
-                    <p>
+                    <div>
                       Mapped list of CORRECT answers:
                       <li>{questionData.answers.correct}</li>
-                    </p>
-                    <p>
+                    </div>
+                    <div>
                       Mapped list of INCORRECT answrs:
                       <ul>
                         {questionData.answers.incorrect.map(
@@ -45,7 +54,7 @@ const Test = ({ subject }) => {
                           )
                         )}
                       </ul>
-                    </p>
+                    </div>
                   </ul>
                 </li>
               ))}
