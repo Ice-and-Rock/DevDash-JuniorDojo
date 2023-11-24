@@ -33,6 +33,18 @@ const Test = ({ subject }) => {
                 <ul>
                   <li>Correct: {questionData.answers.correct}</li>
                   <li>Incorrect: {questionData.answers.incorrect.join(', ')}</li>
+                  <p>Mapped list of CORRECT answers:
+                  <ul>
+                      {questionData.answers.correct}
+                    </ul>
+                  </p>
+                  <p>Mapped list of incorrect answrs:
+                  <ul>
+                      {questionData.answers.incorrect.map((incorrectAnswer, index) => (
+                        <li key={index}>{incorrectAnswer}</li>
+                      ))}
+                    </ul>
+                  </p>
                 </ul>
               </li>
             ))}
