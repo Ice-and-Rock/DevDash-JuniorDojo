@@ -22,6 +22,8 @@ const Test = ({ subject }) => {
   const [responseData, setResponseData] = useState(dummyData);
   const [loading, setLoading] = useState(null);
 
+const [score, setScore] = useState(0)
+
   // const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   // const handleAnswerClick = (selectedAnswer) => {
