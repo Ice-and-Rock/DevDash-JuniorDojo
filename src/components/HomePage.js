@@ -4,6 +4,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import {Example} from "./Example"; // Assuming Example is a React Bootstrap component
 
 const HomePage = () => {
+  console.log("homescreen running")
   return (
     <Container className="text-center mt-5">
       <h1>Welcome to Your Interview Practice App!</h1>

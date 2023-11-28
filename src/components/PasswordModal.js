@@ -4,6 +4,8 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
 const PasswordModal = ({ showModal, handleClose, grantAccess }) => {
+    console.log("Modal running")
+
     const [password, setPassword] = useState('');
 
     const handlePasswordChange = (e) => {

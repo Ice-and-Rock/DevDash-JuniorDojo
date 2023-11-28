@@ -22,59 +22,103 @@ const Test = ({ subject }) => {
   const [responseData, setResponseData] = useState(dummyData);
   const [loading, setLoading] = useState(null);
 
+// States for the Test questions and score 
+  // score state is added when 'cerrect answer is true
+  // showScore boolean, set to true at the end
+  // currentQuestion set to index 0 and changes when answer is given
+  // useranswers will create an object of answers
 const [score, setScore] = useState(0)
+const [showScore, setShowScore] = useState(false) 
+const [currentQuestion, setCurrentQuestion] = useState(0) 
+const [userAnswers, setUserAnswers] = useState({});
 
-  // const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+const handleAnswerClick = (isCorrect) => {
+  setUserAnswers((prevAnswers) => ({
+    ...prevAnswers,
+    [currentQuestion]: isCorrect,
+  }));
+   // Move to the next question
+   if (currentQuestion < responseData.questions.length - 1) {
+    setCurrentQuestion((prevIndex) => prevIndex + 1);
+  }
+};
+const calculateScore = () => {
+  const correctAnswersCount = Object.values(userAnswers).filter(
+    (answer) => answer
+  ).length;
+  setScore(correctAnswersCount);
+};
+const resetQuiz = () => {
+  setCurrentQuestion(0);
+  setUserAnswers({});
+  setScore(0);
+};
 
-  // const handleAnswerClick = (selectedAnswer) => {
-  //   // Handle user's answer logic
-  //   // For example, move to the next question
-  //   setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-  // };
+  
+return (
+  <div>
+    {loading ? (
+      <div>
+        <p>Loading...</p>
+        <Spinner animation="border" size="lg" />
+      </div>
+    ) : responseData && responseData.questions ? (
+      <div>
+        <Container className="m-6 p-6">
+          <Card>
+            <Card.Title>
+              {responseData.questions[currentQuestion].question}
+            </Card.Title>
 
-  // const currentQuestion = responseData[currentQuestionIndex];
+            <div className="d-grid gap-2">
+              <Button
+                variant="primary"
+                size="lg"
+                onClick={() => handleAnswerClick(true)} // Correct answer
+              >
+                {responseData.questions[currentQuestion].answers.correct}
+              </Button>
 
-  return (
-    <div>
-      {loading ? (
-        <div>
-          <p>Loading...</p>
-          <Spinner animation="border" size="lg" />
-        </div>
-      ) : responseData && responseData.questions ? (
-        <div>
-          <div className="Bootstrap render">
-            <Container className="m-6 p-6">
-              {responseData.questions.map((questionData, index) => (
-                <Card key={index}>
-                  <Card.Title>{questionData.question}</Card.Title>
-
-                  <div className="d-grid gap-2">
-                    {/* <li>Correct: {questionData.answers.correct}</li> */}
-                    {/* <li>Incorrect: {questionData.answers.incorrect.join(', ')}</li> */}
-
-                    <Button variant="primary" size="lg">
-                      {questionData.answers.correct}
-                    </Button>
-
-                    {questionData.answers.incorrect.map(
-                      (incorrectAnswer, index) => (
-                        <Button variant="primary" size="lg" key={index}>
-                          {incorrectAnswer}
-                        </Button>
-                      )
-                    )}
-                  </div>
-                </Card>
-              ))}
-            </Container>
+              {responseData.questions[currentQuestion].answers.incorrect.map(
+                (incorrectAnswer, answerIndex) => (
+                  <Button
+                    key={answerIndex}
+                    variant="primary"
+                    size="lg"
+                    onClick={() => handleAnswerClick(false)} // Incorrect answer
+                  >
+                    {incorrectAnswer}
+                  </Button>
+                )
+              )}
+            </div>
+          </Card>
+          <div className="text-center mt-3">
+            <Button variant="success" onClick={calculateScore}>
+              Calculate Score
+            </Button>
+            <Button variant="danger" onClick={resetQuiz} className="ms-2">
+              Reset Quiz
+            </Button>
+            {Object.keys(userAnswers).length ===
+            responseData.questions.length ? (
+              <div>
+                <h2>Your Score: {score}</h2>
+                <p>
+                  Correct Answers: {score} /{" "}
+                  {responseData.questions.length}
+                </p>
+              </div>
+            ) : null}
           </div>
-        </div>
-      ) : (
-        <p>No data available</p>
-      )}
-    </div>
-  );
+        </Container>
+      </div>
+    ) : (
+      <p>No data available</p>
+    )}
+  </div>
+);
+
 };
 
 export default Test;
