@@ -48,7 +48,7 @@ const calculateScore = () => {
   ).length;
   setScore(correctAnswersCount);
 };
-const resetQuiz = () => {
+const resetTest = () => {
   setCurrentQuestion(0);
   setUserAnswers({});
   setScore(0);
@@ -97,8 +97,8 @@ return (
             <Button variant="success" onClick={calculateScore}>
               Calculate Score
             </Button>
-            <Button variant="danger" onClick={resetQuiz} className="ms-2">
-              Reset Quiz
+            <Button variant="danger" onClick={resetTest} className="ms-2">
+              Reset Test
             </Button>
             {Object.keys(userAnswers).length ===
             responseData.questions.length ? (

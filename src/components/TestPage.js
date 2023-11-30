@@ -27,7 +27,9 @@ const TestPage = () => {
           {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
           <Card.Body>
             <Card.Title>{subject.toUpperCase()} QUIZ</Card.Title>
-            <Card.Text>Please click on the button below to start</Card.Text>
+            <Card.Header>Welcome to your {subject.toUpperCase()} test!</Card.Header>
+            <Card.Text>The test will consist of TEN multiple-choice questions. After you've finished, you can see your score and also reset, if you'd like to start again.</Card.Text>
+            <Card.Text>In order to continue, please click on the button below to start</Card.Text>
             <>
               <Button variant="primary" onClick={handleShow}>
                 Enter Password
@@ -39,7 +41,7 @@ const TestPage = () => {
       )}
       {passwordAccess && (
         <>
-          <h1>{subject.toUpperCase()} QUIZ...</h1>
+          <h1>{subject.toUpperCase()} TEST...</h1>
           <Test subject={subject} />
         </>
       )}
