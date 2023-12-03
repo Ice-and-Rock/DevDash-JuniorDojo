@@ -61,17 +61,17 @@ const handleAnswerClick = (isCorrect) => {
 
 // Calculate the score, but it must use updatedAnswers object !
 const calculateScore = (updatedAnswers) => {
-  console.log("calculate score running")
+  
   const correctAnswersCount = Object.values(updatedAnswers).filter(
     (answer) => answer
     ).length;
     setScore(correctAnswersCount);
-    console.log("correct Answer Count:", correctAnswersCount)
+    console.log("calculate score running ✅", "correct Answer Count:", correctAnswersCount)
   };
 
   // Checks ⭐️
-  console.log("user answers:", userAnswers)
-  console.log("Score:", score)
+  // console.log("user answers:", userAnswers)
+  // console.log("Score:", score)
 
   // Simple reset 
   const resetTest = () => {
@@ -130,7 +130,7 @@ const calculateScore = (updatedAnswers) => {
             {Object.keys(userAnswers).length ===
             responseData.questions.length ? (
               <div>
-                <h2>Your Score: {score}</h2>
+                <h1>Your Score: {score}</h1>
                 <p>
                   Correct Answers: {score} /{" "}
                   {responseData.questions.length}

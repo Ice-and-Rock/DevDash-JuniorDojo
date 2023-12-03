@@ -41,7 +41,7 @@ const TestPage = () => {
       )}
       {passwordAccess && (
         <>
-          <h1>{subject.toUpperCase()} TEST...</h1>
+          <h1>{subject.toUpperCase()} QUESTIONS...</h1>
           <Test subject={subject} />
         </>
       )}
