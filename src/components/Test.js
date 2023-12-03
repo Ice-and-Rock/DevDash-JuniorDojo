@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import dummyData from "../data/dummyData.json";
@@ -32,39 +32,58 @@ const [showScore, setShowScore] = useState(false)
 const [currentQuestion, setCurrentQuestion] = useState(0) 
 const [userAnswers, setUserAnswers] = useState({});
 
-console.log("user answers:", userAnswers)
-console.log("Score:", score)
 
 const handleAnswerClick = (isCorrect) => {
-  setUserAnswers((prevAnswers) => ({
-    ...prevAnswers,
-    [currentQuestion]: isCorrect,
-  }));
-   // Move to the next question
-   if (currentQuestion < responseData.questions.length - 1) {
+  setUserAnswers((prevAnswers) => {
+    const updatedAnswers = {
+      ...prevAnswers,
+      [currentQuestion]: isCorrect,
+    };
+
+    setUserAnswers(updatedAnswers)
+
+  // Move to the next question when funciotn is called 
+  if (currentQuestion < responseData.questions.length - 1) {
     setCurrentQuestion((prevIndex) => prevIndex + 1);
+  } else if (currentQuestion === responseData.questions.length - 1) {
+    setShowScore(true)
+    console.log("end of questions")
   } 
-  if (currentQuestion === responseData.questions.length) {
-    calculateScore()
-  }
-};
-const calculateScore = () => {
-  console.log("calculate score running")
-  const correctAnswersCount = Object.values(userAnswers).filter(
-    (answer) => answer
-  ).length;
-  console.log("correct Answer Count:", correctAnswersCount)
-  setScore(correctAnswersCount);
-};
-const resetTest = () => {
-  setCurrentQuestion(0);
-  setUserAnswers({});
-  setScore(0);
+    // call calculateScore after setting UPDATED ANSWERS ! 
+    calculateScore(updatedAnswers);
+
+    return updatedAnswers;
+  });
+  
 };
 
+
+
+// Calculate the score, but it must use updatedAnswers object !
+const calculateScore = (updatedAnswers) => {
+  console.log("calculate score running")
+  const correctAnswersCount = Object.values(updatedAnswers).filter(
+    (answer) => answer
+    ).length;
+    setScore(correctAnswersCount);
+    console.log("correct Answer Count:", correctAnswersCount)
+  };
+
+  // Checks ⭐️
+  console.log("user answers:", userAnswers)
+  console.log("Score:", score)
+
+  // Simple reset 
+  const resetTest = () => {
+    setCurrentQuestion(0);
+    setUserAnswers({});
+    setScore(0);
+    setShowScore(false);
+  };
   
-return (
-  <div>
+  
+  return (
+    <div>
     {loading ? (
       <div>
         <p>Loading...</p>
@@ -102,9 +121,9 @@ return (
             </div>
           </Card>
           <div className="text-center mt-3">
-            <Button variant="success" onClick={calculateScore}>
+            {/* <Button variant="success" onClick={calculateScore}>
               Calculate Score
-            </Button>
+            </Button> */}
             <Button variant="danger" onClick={resetTest} className="ms-2">
               Reset Test
             </Button>
