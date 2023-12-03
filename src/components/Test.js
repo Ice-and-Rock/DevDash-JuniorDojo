@@ -1,74 +1,151 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import dummyData from "../data/dummyData.json";
+import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Stack from "react-bootstrap/Stack";
+import Card from "react-bootstrap/Card";
+import Spinner from "react-bootstrap/Spinner";
 // import useOpenAIQuestions from '../hooks/useAIQuestions';
-import useOpenAIChat from '../openAI/useOpenAIChat';
+// import useOpenAIChat from "../openAI/useOpenAIChat";
 
 const Test = ({ subject }) => {
-  const [responseData, loading] = useOpenAIChat(subject);
-  // const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  // IMPORTANT ❗️
+  // Below is the API fetch
+  // Disabled for now ⛔️
+  // const [responseData, loading] = useOpenAIChat(subject);
+  // const responseData = '../../data/dummyData.json'
+  const [responseData, setResponseData] = useState(dummyData);
+  const [loading, setLoading] = useState(null);
 
-  // const handleAnswerClick = (selectedAnswer) => {
-  //   // Handle user's answer logic
-  //   // For example, move to the next question
-  //   setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-  // };
+// States for the Test questions and score 
+  // score state is added when 'cerrect answer is true
+  // showScore boolean, set to true at the end
+  // currentQuestion set to index 0 and changes when answer is given
+  // useranswers will create an object of answers
+const [score, setScore] = useState(0)
+const [showScore, setShowScore] = useState(false) 
+const [currentQuestion, setCurrentQuestion] = useState(0) 
+const [userAnswers, setUserAnswers] = useState({});
 
-  // const currentQuestion = responseData[currentQuestionIndex];
 
+const handleAnswerClick = (isCorrect) => {
+  setUserAnswers((prevAnswers) => {
+    const updatedAnswers = {
+      ...prevAnswers,
+      [currentQuestion]: isCorrect,
+    };
+
+    setUserAnswers(updatedAnswers)
+
+  // Move to the next question when funciotn is called 
+  if (currentQuestion < responseData.questions.length - 1) {
+    setCurrentQuestion((prevIndex) => prevIndex + 1);
+  } else if (currentQuestion === responseData.questions.length - 1) {
+    setShowScore(true)
+    console.log("end of questions")
+  } 
+    // call calculateScore after setting UPDATED ANSWERS ! 
+    calculateScore(updatedAnswers);
+
+    return updatedAnswers;
+  });
+  
+};
+
+
+
+// Calculate the score, but it must use updatedAnswers object !
+const calculateScore = (updatedAnswers) => {
+  
+  const correctAnswersCount = Object.values(updatedAnswers).filter(
+    (answer) => answer
+    ).length;
+    setScore(correctAnswersCount);
+    console.log("calculate score running ✅", "correct Answer Count:", correctAnswersCount)
+  };
+
+  // Checks ⭐️
+  // console.log("user answers:", userAnswers)
+  // console.log("Score:", score)
+
+  // Simple reset 
+  const resetTest = () => {
+    setCurrentQuestion(0);
+    setUserAnswers({});
+    setScore(0);
+    setShowScore(false);
+  };
+  
+  
   return (
     <div>
     {loading ? (
-      <p>Loading...</p>
+      <div>
+        <p>Loading...</p>
+        <Spinner animation="border" size="lg" />
+      </div>
     ) : responseData && responseData.questions ? (
       <div>
-        <h1>Interview Questions for {subject}</h1>
-        <p>Test Question: {responseData.questions[0].question}</p>
+        <Container className="m-6 p-6">
+          <Card>
+            <Card.Title>
+              {responseData.questions[currentQuestion].question}
+            </Card.Title>
 
+            <div className="d-grid gap-2">
+              <Button
+                variant="primary"
+                size="lg"
+                onClick={() => handleAnswerClick(true)} // Correct answer
+              >
+                {responseData.questions[currentQuestion].answers.correct}
+              </Button>
 
-        <div>
-          <h1>Interview Questions for {subject}</h1>
-          <ul>
-            {responseData.questions.map((questionData, index) => (
-              <li key={index}>
-                <p>{questionData.question}</p>
-                <ul>
-                  <li>Correct: {questionData.answers.correct}</li>
-                  <li>Incorrect: {questionData.answers.incorrect.join(', ')}</li>
-                  <p>Mapped list of CORRECT answers:
-                  <ul>
-                      {questionData.answers.correct}
-                    </ul>
-                  </p>
-                  <p>Mapped list of incorrect answrs:
-                  <ul>
-                      {questionData.answers.incorrect.map((incorrectAnswer, index) => (
-                        <li key={index}>{incorrectAnswer}</li>
-                      ))}
-                    </ul>
-                  </p>
-                </ul>
-              </li>
-            ))}
-          </ul>
-        </div>
-        {/* <ul>
-          {responseData.questions.map((question, index) => (
-            <li key={index}>
-              <p>{question.question}</p>
-              <ul>
-                <li>Correct: {question.answers.correct}</li>
-                <li>Incorrect: {question.answers.incorrect.join(', ')}</li>
-              </ul>
-            </li>
-          ))}
-        </ul> */}
+              {responseData.questions[currentQuestion].answers.incorrect.map(
+                (incorrectAnswer, answerIndex) => (
+                  <Button
+                    key={answerIndex}
+                    variant="primary"
+                    size="lg"
+                    onClick={() => handleAnswerClick(false)} // Incorrect answer
+                  >
+                    {incorrectAnswer}
+                  </Button>
+                )
+              )}
+            </div>
+          </Card>
+          <div className="text-center mt-3">
+            {/* <Button variant="success" onClick={calculateScore}>
+              Calculate Score
+            </Button> */}
+            <Button variant="danger" onClick={resetTest} className="ms-2">
+              Reset Test
+            </Button>
+            {Object.keys(userAnswers).length ===
+            responseData.questions.length ? (
+              <div>
+                <h1>Your Score: {score}</h1>
+                <p>
+                  Correct Answers: {score} /{" "}
+                  {responseData.questions.length}
+                </p>
+              </div>
+            ) : null}
+          </div>
+        </Container>
       </div>
     ) : (
       <p>No data available</p>
     )}
   </div>
-  );
+);
+
 };
 
 export default Test;
-
-
