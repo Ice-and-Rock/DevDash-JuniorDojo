@@ -6,7 +6,9 @@ import Modal from 'react-bootstrap/Modal';
 const PasswordModal = ({ showModal, handleClose, grantAccess }) => {
     console.log("Modal running")
 
+    const correctPassword = process.env.REACT_APP_CORRECT_PASSWORD;
     const [password, setPassword] = useState('');
+
 
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
@@ -14,7 +16,7 @@ const PasswordModal = ({ showModal, handleClose, grantAccess }) => {
     
       const handleEnterClick = () => {
        
-        if (password === '1234') {
+        if (password === correctPassword) {
           grantAccess();
           console.log("correct password entered ✅");
 

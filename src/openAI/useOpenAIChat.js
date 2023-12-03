@@ -26,7 +26,11 @@ const OpenAIChat = (subject) => {
         response_format: { type: "json_object" },
       });
       const responseData = JSON.parse(completion.choices[0].message.content);
-      console.log(responseData);
+
+      // IMPORTANT ❗️ 
+      // Item below can be used to display the fetched data ✅
+      // console.log(responseData);
+
       setResponseData(responseData) 
       setLoading(false)
     } catch (error) {
