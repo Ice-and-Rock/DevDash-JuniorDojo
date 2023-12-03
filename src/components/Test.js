@@ -32,6 +32,9 @@ const [showScore, setShowScore] = useState(false)
 const [currentQuestion, setCurrentQuestion] = useState(0) 
 const [userAnswers, setUserAnswers] = useState({});
 
+console.log("user answers:", userAnswers)
+console.log("Score:", score)
+
 const handleAnswerClick = (isCorrect) => {
   setUserAnswers((prevAnswers) => ({
     ...prevAnswers,
@@ -40,12 +43,17 @@ const handleAnswerClick = (isCorrect) => {
    // Move to the next question
    if (currentQuestion < responseData.questions.length - 1) {
     setCurrentQuestion((prevIndex) => prevIndex + 1);
+  } 
+  if (currentQuestion === responseData.questions.length) {
+    calculateScore()
   }
 };
 const calculateScore = () => {
+  console.log("calculate score running")
   const correctAnswersCount = Object.values(userAnswers).filter(
     (answer) => answer
   ).length;
+  console.log("correct Answer Count:", correctAnswersCount)
   setScore(correctAnswersCount);
 };
 const resetTest = () => {
