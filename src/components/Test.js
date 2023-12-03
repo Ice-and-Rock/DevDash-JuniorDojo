@@ -100,15 +100,15 @@ const calculateScore = (updatedAnswers) => {
 
           ) : (
 
-            <Card>
+            <Card className="m-3 p-3">
               <Card.Title>
                 {responseData.questions[currentQuestion].question}
               </Card.Title>
 
-              <div className="d-grid gap-2">
+              <div className="d-grid gap-3">
                 <Button
                   variant="primary"
-                  size="lg"
+                  size="md"
                   onClick={() => handleAnswerClick(true)} // Correct answer
                 >
                   {responseData.questions[currentQuestion].answers.correct}
@@ -119,7 +119,7 @@ const calculateScore = (updatedAnswers) => {
                     <Button
                       key={answerIndex}
                       variant="primary"
-                      size="lg"
+                      size="md"
                       onClick={() => handleAnswerClick(false)} // Incorrect answer
                     >
                       {incorrectAnswer}
@@ -127,9 +127,11 @@ const calculateScore = (updatedAnswers) => {
                   )
                 )}
               </div>
-                <Button variant="danger" onClick={resetTest} className="ms-2">
+              <div>
+                <Button variant="danger" onClick={resetTest} className="ms-2 p-2 m-4">
                   Reset Test
                 </Button>
+              </div>
 
               {/* <div className="text-center mt-3">
                 {Object.keys(userAnswers).length === responseData.questions.length ? (

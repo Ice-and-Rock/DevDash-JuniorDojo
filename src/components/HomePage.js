@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import  topics  from '../data/topics'
 
 const HomePage = () => {
   console.log("homescreen running");
@@ -29,8 +30,27 @@ const HomePage = () => {
       </div>
       <div className="topic-section">
       <h2 className="app-lead">Choose your topic:</h2>      
+      <Row xs={1} md={2} lg={3} className="g-4">
+         
+          {topics.map((topic, index) => (
+            <Col key={index} className="mb-3">
+              <Link to={topic.link} className="text-decoration-none">
+                <Card className="topic-card" bg='' text="black">
+                  <Card.Body>
+                    <Card.Title>{topic.title}</Card.Title>
+                    <Card.Text>{topic.text}</Card.Text>
+                    <Button variant={topic.variant}>Explore</Button>
+                  </Card.Body>
+                </Card>
+              </Link>
+            </Col>
+          ))}
+        </Row>
+     
+       
 
-      <Row className="justify-content-center">
+
+      {/* <Row className="justify-content-center">
         <Col xs={12} sm={6} md={4} lg={3} className="mb-3">
           <Link to="/test/react" className="text-decoration-none">
             <Button variant="primary">React</Button>
@@ -71,7 +91,7 @@ const HomePage = () => {
             <Button variant="warning">React-Bootstrap</Button>
           </Link>
         </Col>
-      </Row>
+      </Row> */}
       </div>
 
       <div className="openai-section">
