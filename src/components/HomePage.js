@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import  topics  from '../data/topics'
+import Footer from "./Footer";
 
 const HomePage = () => {
   console.log("homescreen running");
@@ -102,6 +103,7 @@ const HomePage = () => {
           This ensures a unique and tailored practice environment.
         </p>
       </div>
+    <Footer />
     </Container>
   );
 };
