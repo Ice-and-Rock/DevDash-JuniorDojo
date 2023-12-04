@@ -19,7 +19,7 @@ const OpenAIChat = (subject) => {
             content: "You are a helpful assistant designed to output JSON.",
           },
           { role: "user", content: 
-             `generate 10 ${subject} interview questions for a junior full stack developer with answers. include incorrect answers, format the response as a JSON questions object in the shape of: [{"question": "What is the primary purpose of the \'map\' function in JavaScript?", "answers": {"correct": "Transforms each element of an array and returns a new array.", "incorrect": ["Adds a new element to the end of the array.", "Removes the first element from the array.", "Concatenates two arrays into a single array."]}}]`,
+             `generate 10 ${subject} interview questions for a junior full stack developer with answers. include incorrect answers, format the response as a JSON questions object in the shape of: [{"question": "What is the primary purpose of the 'map' function in JavaScript?", "answers": {"correct": "Transforms each element of an array and returns a new array.", "incorrect": ["Adds a new element to the end of the array.", "Removes the first element from the array.", "Concatenates two arrays into a single array."]}}]`,
     },
         ],
         model: "gpt-3.5-turbo-1106",
