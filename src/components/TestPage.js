@@ -10,7 +10,7 @@ const TestPage = () => {
   const { subject } = useParams();
   const [passwordAccess, setPasswordAccess] = useState(false);
 
-  //MODAL COMPONENT
+  // MODAL COMPONENT
   const [showModal, setShowModal] = useState(false);
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
@@ -21,29 +21,30 @@ const TestPage = () => {
   };
 
   return (
-    <Container>
+    <Container className="mt-5">
       {!passwordAccess && (
-        <Card style={{ width: "18rem" }}>
-          {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
+        <Card style={{ width: "18rem" }} className="mx-auto">
           <Card.Body>
-            <Card.Title>{subject.toUpperCase()} QUIZ</Card.Title>
-            <Card.Header>Welcome to your {subject.toUpperCase()} test!</Card.Header>
-            <Card.Text>The test will consist of TEN multiple-choice questions. After you've finished, you can see your score and also reset, if you'd like to start again.</Card.Text>
-            <Card.Text>In order to continue, please click on the button below to start</Card.Text>
-            <>
+            <Card.Title className="text-center">{subject.toUpperCase()} QUIZ</Card.Title>
+            <Card.Header className="text-center bg-info rounded">Welcome to your {subject.toUpperCase()} test!</Card.Header>
+            <Card.Text>
+              The test will consist of TEN multiple-choice questions. After you've finished, you can see your score and also reset if you'd like to start again.
+            </Card.Text>
+            <Card.Text className="text-center">To continue, please enter the password below:</Card.Text>
+            <div className="text-center">
               <Button variant="primary" onClick={handleShow}>
                 Enter Password
               </Button>
               <PasswordModal showModal={showModal} handleClose={handleClose} grantAccess={grantAccess} />
-            </>
+            </div>
           </Card.Body>
         </Card>
       )}
       {passwordAccess && (
-        <>
+        <div className="text-center mt-3">
           <h1>{subject.toUpperCase()} QUESTIONS...</h1>
           <Test subject={subject} />
-        </>
+        </div>
       )}
     </Container>
   );

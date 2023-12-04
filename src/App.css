@@ -1,38 +1,75 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: gray; 
+  margin:0;
+  padding: 15px;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+}
+
+/* Homepage */
+.app-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  background-color: #3498db; 
+  color: whitesmoke;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.app-description {
+  font-size: 1rem;
+  margin: 30px;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding: 10px
+}
+
+.app-tagline {
+  background-color: black;
+  color:whitesmoke;
+  border-radius: 10px;
+  padding: 15px;
+  
+}
+.app-gif-container {
+  height: 60%;
+  padding-bottom: 5%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 30px;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.app-lead {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.topic-section {
+  background-color: lightgrey;
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 5px 10px rgba(10, 20, 10, 10);
+} Button {
+  box-shadow: 0 5px 5px rgba(10, 10, 10, 10);
+}
+.topic-card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+.topic-card:hover {
+  transform: scale(1.03);
+}
+.openai-section {
+  margin-top: 50px;
+  padding: 10px;
+  background-color: #f8f9fa; 
+  border-radius: 10px;
+  box-shadow: 0 10px 10px rgba(10, 20, 10, 10);
 }
