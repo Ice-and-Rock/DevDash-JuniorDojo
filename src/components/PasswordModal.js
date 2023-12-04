@@ -35,7 +35,7 @@ const PasswordModal = ({ showModal, handleClose, grantAccess }) => {
           <Form>
             
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Label>Enter Dojo password...</Form.Label>
+            <Form.Label>Dojo password...</Form.Label>
             <Form.Control
               type="password"
               value={password}

@@ -30,7 +30,7 @@ const TestPage = () => {
             <Card.Text>
               The test will consist of TEN multiple-choice questions. After you've finished, you can see your score and also reset if you'd like to start again.
             </Card.Text>
-            <Card.Text className="text-center">To continue, please enter the password below:</Card.Text>
+            <Card.Text className="text-center">To continue, please enter the Dojo password below:</Card.Text>
             <div className="text-center">
               <Button variant="primary" onClick={handleShow}>
                 Enter Password
