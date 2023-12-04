@@ -1,7 +1,7 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 
-const ShowScore = ({ score, totalQuestions }) => {
+const ShowScore = ({ score, totalQuestions, resetTest }) => {
   return (
     <Card className="text-center bg-info text-white">
       <Card.Body>
@@ -15,6 +15,9 @@ const ShowScore = ({ score, totalQuestions }) => {
           </Card.Text>
         </Card.Text>
       </Card.Body>
+      <Button variant="danger" onClick={resetTest} className="ms-2 p-2 m-4">
+        Reset Test
+      </Button>
     </Card>
   );
 };

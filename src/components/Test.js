@@ -95,7 +95,9 @@ const Test = ({ subject }) => {
               <ShowScore
                 score={score}
                 totalQuestions={responseData.questions.length}
+                resetTest={resetTest}
               />
+
             ) : (
               <Card className="m-3 p-3">
                 <Card.Title>
