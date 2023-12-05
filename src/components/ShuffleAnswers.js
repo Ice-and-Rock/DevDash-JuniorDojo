@@ -7,7 +7,7 @@ const ShuffledAnswers = ({ question, handleAnswerClick }) => {
   
   useEffect(() => {
     shuffleAnswers();
-  }, [question]);
+  }, []);
 
   const shuffleAnswers = () => {
     const correctAnswer = question.answers.correct;
