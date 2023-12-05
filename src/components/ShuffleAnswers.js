@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 
 const ShuffledAnswers = ({ question, handleAnswerClick }) => {
   const [shuffledAnswers, setShuffledAnswers] = useState([]);
-
+  
   useEffect(() => {
     shuffleAnswers();
   }, [question]);
