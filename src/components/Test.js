@@ -8,6 +8,7 @@ import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
 import useOpenAIChat from "../openAI/useOpenAIChat";
 import ShowScore from "./ShowScore";
+import ShuffledAnswers from "./ShuffleAnswers";
 
 const Test = ({ subject }) => {
   const [responseData, loading] = useOpenAIChat(subject);
@@ -65,7 +66,7 @@ const Test = ({ subject }) => {
   };
 
   // Checks ⭐️
-  console.log("user answers:", userAnswers)
+  console.log("user answers:", userAnswers);
   // console.log("Score:", score)
 
   // Simple reset
@@ -97,35 +98,19 @@ const Test = ({ subject }) => {
                 totalQuestions={responseData.questions.length}
                 resetTest={resetTest}
               />
-
             ) : (
               <Card className="m-3 p-3">
                 <Card.Title>
                   {responseData.questions[currentQuestion].question}
                 </Card.Title>
 
-                <div className="d-grid gap-3">
-                  <Button
-                    variant="primary"
-                    size="md"
-                    onClick={() => handleAnswerClick(true)} // Correct answer
-                  >
-                    {responseData.questions[currentQuestion].answers.correct}
-                  </Button>
+                
+                <ShuffledAnswers
+                  question={responseData.questions[currentQuestion]}
+                  handleAnswerClick={handleAnswerClick}
+                />
+                
 
-                  {responseData.questions[
-                    currentQuestion
-                  ].answers.incorrect.map((incorrectAnswer, answerIndex) => (
-                    <Button
-                      key={answerIndex}
-                      variant="primary"
-                      size="md"
-                      onClick={() => handleAnswerClick(false)} // Incorrect answer
-                    >
-                      {incorrectAnswer}
-                    </Button>
-                  ))}
-                </div>
                 <div>
                   <Button
                     variant="danger"
