@@ -7,6 +7,7 @@ const ShuffledAnswers = ({ question, handleAnswerClick }) => {
   
   useEffect(() => {
     shuffleAnswers();
+    console.log("useEffect for shuffleAnswers running ❗️")
   }, []);
 
   const shuffleAnswers = () => {
