@@ -12,8 +12,10 @@ const ShowScore = ({ score, totalQuestions, resetTest }) => {
           Correct Answers: {score} / {totalQuestions}
         </Card.Text>
       </Card.Body>
-      <CardFooter>
-        <Card.Text>Well done, you've got this! 🎉</Card.Text>
+
+      {displayResults && (
+      <Card.Body> 
+        <Card.Title>Well done, you've got this! 🎉</Card.Title>
         <Card.Text>
           You're going to do really well in the Interview. Just remember to stay
           calm and have fun...
@@ -30,15 +32,24 @@ const ShowScore = ({ score, totalQuestions, resetTest }) => {
           </a>
           !
         </Card.Text>
-      </CardFooter>
-      <Button variant="danger" onClick={resetTest} className="ms-2 p-2 m-4">
-        Reset Test
-      </Button>
-      <Link to="/">
-        <Button variant="success" className="ms-2 p-2 m-4">
-          Return Home
+      </Card.Body>
+      )}
+
+      <CardFooter>
+        <Button variant="danger" onClick={resetTest} className="ms-2 p-2 m-4">
+          Reset Test
         </Button>
-      </Link>
+        <Link to="results">
+          <Button variant="primary" className="ms-2 p-2 m-4">
+            Test Results
+          </Button>
+        </Link>
+        <Link to="/">
+          <Button variant="success" className="ms-2 p-2 m-4">
+            Return Home
+          </Button>
+        </Link>
+      </CardFooter>
     </Card>
   );
 };
