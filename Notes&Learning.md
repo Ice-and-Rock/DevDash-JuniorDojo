@@ -10,9 +10,9 @@
 ## Current plan
 Overall goals
 - Finish the rendering of the Test component
-    - 1 question st a time
-    - reload button
-    - show score at the end of the test
+    - 1 question at a time ✅
+    - reload button ✅
+    - show score at the end of the test ✅
 - Enclose the test component into a seperate box
     - outside are the buttons for the reload
     - outside is the number of question they are up to
@@ -26,4 +26,12 @@ Overall goals
 - research Bootstrap examples - which is fairly limited? 
 
 ### make sure the FETCH is onyl actuvatedx once after the password component is called
+✅
 
+## Feedback from users:
+**render something fun to do when the tests are loading**
+**Show the asnwers of the user and show them the correct ones**
+
+    **Test Results Component** 
+        - Create a Results component, pass props for { responseData, userAnswers }
+        - Conditionally render the <Results /> component over the ShowScore component .Body 
