@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Button, CardFooter } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Results from "./Results.js";
 
-const ShowScore = ({ score, totalQuestions, resetTest }) => {
+
+const ShowScore = ({ score, totalQuestions, resetTest, userAnswers, responseData }) => {
+
+const [showResults, setShowResults] = useState(false)
+
+const handleShowResults = () => {
+  setShowResults(true)
+} 
+
   return (
     <Card className="text-center bg-info text-white">
       <Card.Body>
@@ -13,7 +22,12 @@ const ShowScore = ({ score, totalQuestions, resetTest }) => {
         </Card.Text>
       </Card.Body>
 
-      {displayResults && (
+      {showResults ? (
+
+        <Results userAnswers={userAnswers} responseData={responseData}/>
+
+      ) : (
+
       <Card.Body> 
         <Card.Title>Well done, you've got this! 🎉</Card.Title>
         <Card.Text>
@@ -40,7 +54,7 @@ const ShowScore = ({ score, totalQuestions, resetTest }) => {
           Reset Test
         </Button>
         <Link to="results">
-          <Button variant="primary" className="ms-2 p-2 m-4">
+          <Button variant="primary" onClick={handleShowResults} className="ms-2 p-2 m-4">
             Test Results
           </Button>
         </Link>

@@ -97,6 +97,8 @@ const Test = ({ subject }) => {
                 score={score}
                 totalQuestions={responseData.questions.length}
                 resetTest={resetTest}
+                userAnswers={userAnswers}
+                responseData={responseData}
               />
             ) : (
               <Card className="m-3 p-3">
