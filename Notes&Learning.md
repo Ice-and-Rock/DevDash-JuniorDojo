@@ -33,5 +33,11 @@ Overall goals
 **Show the asnwers of the user and show them the correct ones**
 
     **Test Results Component** 
+    Render:
         - Create a Results component, pass props for { responseData, userAnswers }
-        - Conditionally render the <Results /> component over the ShowScore component .Body 
+        - Conditionally render the <Results /> component over the ShowScore component Card.Body
+    Code:
+        Use map() to iterate through the responseData.questions with (questionData, index)
+            - render the question number "+1" (starts from 0)
+            - Create a Card.Body tag for the data to render 
+            - render the question / answers.correct
