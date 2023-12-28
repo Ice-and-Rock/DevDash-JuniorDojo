@@ -34,6 +34,7 @@ const Results = ({ userAnswers, responseData }) => {
 
     <div>
   <Card.Body>
+  <Card.Text>These were your answers</Card.Text>
     {Object.keys(userAnswers).map((answerKey, index) => (
       <div
         key={index}
@@ -45,6 +46,7 @@ const Results = ({ userAnswers, responseData }) => {
   </Card.Body>
 
   <Card.Body>
+  <Card.Text>The correct answers, with your incorrect answers in <span style={{ color: 'red', fontWeight: 'bold' }}>RED</span></Card.Text>
     {responseData.questions.map((questionData, index) => (
       <div key={index}>
         <Card.Title>Question {index + 1}:</Card.Title>
