@@ -1,3 +1,5 @@
+import { Card } from "react-bootstrap";
+
 const Results = ({ userAnswers, responseData }) => {
   console.log("results component answers:", userAnswers);
   console.log("results component data:", responseData);
@@ -7,21 +9,25 @@ const Results = ({ userAnswers, responseData }) => {
 
   return (
     <div>
-      <p>
-        {Object.keys(userAnswers).map((key, index) => (
-          <div key={index}>{userAnswers[key]}</div>
+      <Card.Body>
+        {Object.keys(userAnswers).map((answerKey, index) => (
+          <div key={index}>{userAnswers[answerKey].toString()}</div>
         ))}
-      </p>
+      </Card.Body>
 
-      <div>
-      {responseData.questions.map((questionData, index) => (
-        <div key={index}>
-          <p>Question {index+1}: {questionData.question}</p>
-         
-          {/* <p>Answers: {questionData.answers}</p> */}
-        </div>
-      ))}
-    </div>
+      <Card.Body>
+        {responseData.questions.map((questionData, index) => (
+          <div key={index}>
+            <Card.Title>Question {index + 1}:</Card.Title>
+            <Card className="m-2 p-2">
+              <Card.Title>{questionData.question}</Card.Title>
+              <Card.Text>{questionData.answers.correct}</Card.Text>
+            </Card>
+
+            {/* <p>Answers: {questionData.answers}</p> */}
+          </div>
+        ))}
+      </Card.Body>
     </div>
   );
 };
