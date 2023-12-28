@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Card, Button, CardFooter } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Results from "./Results.js";
+import Results from "./Results";
 
 
 const ShowScore = ({ score, totalQuestions, resetTest, userAnswers, responseData }) => {
@@ -53,11 +53,11 @@ const handleShowResults = () => {
         <Button variant="danger" onClick={resetTest} className="ms-2 p-2 m-4">
           Reset Test
         </Button>
-        <Link to="results">
+        
           <Button variant="primary" onClick={handleShowResults} className="ms-2 p-2 m-4">
             Test Results
           </Button>
-        </Link>
+        
         <Link to="/">
           <Button variant="success" className="ms-2 p-2 m-4">
             Return Home
