@@ -16,7 +16,7 @@ const Results = ({ userAnswers, responseData }) => {
       <div>
       {responseData.questions.map((questionData, index) => (
         <div key={index}>
-          <p>Question: {questionData.question}</p>
+          <p>Question {index+1}: {questionData.question}</p>
          
           {/* <p>Answers: {questionData.answers}</p> */}
         </div>
