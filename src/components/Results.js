@@ -6,6 +6,8 @@ const Results = ({ userAnswers, responseData }) => {
 
   // NOTES
   // userAnswers is an Object, needs Object.keys for .MAP()
+  // combine the index of both .map() methods 
+    // colour the questions depending on this combination
 
   return (
     // <div>
