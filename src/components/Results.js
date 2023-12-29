@@ -52,6 +52,7 @@ const Results = ({ userAnswers, responseData }) => {
           <div key={index}>
             <Card.Title>Question {index + 1}:</Card.Title>
             <Card
+            // Use the index from previous .map() function for colour *
               style={{ background: userAnswers[index] ? "lightgreen" : "pink" }}
               className="m-2 p-2"
             >

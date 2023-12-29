@@ -29,8 +29,7 @@ Overall goals
 ✅
 
 ## Feedback from users:
-**render something fun to do when the tests are loading**
-**Show the asnwers of the user and show them the correct ones**
+**Show the asnwers of the user and show them the correct ones** ✅
 
     **Test Results Component** 
     Render:
@@ -47,3 +46,16 @@ Overall goals
         Use .map() to iterate through {userAnswers} 
             - display emoji ✅ / ❌ depending on user answer: true OR false 
             - with the index( +1 ) for the question number 
+
+**render something fun to do when the tests are loading**
+
+    Adapt and import an old rock, paper, scissors game into the component
+        - Check the old game can me imported as a third party library 
+    🏆 I build and installed my own game via NPM package, couldn't find a good one. 
+        - what an achievement!! ⭐️
+    **next...**
+    - Install the new package I build and add it to the Test component
+    - Didn't work ❌
+        - Check the compatability of the new game with React 
+        - Might need to check exports and JSX if using the new package as a JSX !!
+

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 // import dummyData from "../data/dummyData.json";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -10,6 +9,7 @@ import Spinner from "react-bootstrap/Spinner";
 import useOpenAIChat from "../openAI/useOpenAIChat";
 import ShowScore from "./ShowScore";
 import ShuffledAnswers from "./ShuffleAnswers";
+import PuzzleGame from "puzzle-slider-game";
 
 const Test = ({ subject }) => {
   const [responseData, loading] = useOpenAIChat(subject);
@@ -88,6 +88,9 @@ const Test = ({ subject }) => {
             This may take a few moments because every Dojo Exam is tailor made
             and unique!{" "}
           </p>
+          <div>
+            <PuzzleGame />
+          </div>
         </div>
       ) : responseData && responseData.questions ? (
         <div>
@@ -107,12 +110,10 @@ const Test = ({ subject }) => {
                   {responseData.questions[currentQuestion].question}
                 </Card.Title>
 
-                
                 <ShuffledAnswers
                   question={responseData.questions[currentQuestion]}
                   handleAnswerClick={handleAnswerClick}
                 />
-                
 
                 <div>
                   <Button
