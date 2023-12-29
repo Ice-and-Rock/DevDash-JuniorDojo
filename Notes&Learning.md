@@ -37,7 +37,13 @@ Overall goals
         - Create a Results component, pass props for { responseData, userAnswers }
         - Conditionally render the <Results /> component over the ShowScore component Card.Body
     Code:
-        Use map() to iterate through the responseData.questions with (questionData, index)
+        Use .map() to iterate through the {responseData.questions} with (questionData, index)
             - render the question number "+1" (starts from 0)
             - Create a Card.Body tag for the data to render 
-            - render the question / answers.correct
+            - render the question / answers.correct (shows correct answer)
+            - colour the render
+                - Depending on whether the userAnswers[index] is true/false
+                - using "style={{ background: ? colour : colour}}
+        Use .map() to iterate through {userAnswers} 
+            - display emoji ✅ / ❌ depending on user answer: true OR false 
+            - with the index( +1 ) for the question number 
