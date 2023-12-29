@@ -89,7 +89,7 @@ const Test = ({ subject }) => {
             and unique!{" "}
           </p>
           <div>
-            <PuzzleGame />
+            {/* <PuzzleGame /> */}
           </div>
         </div>
       ) : responseData && responseData.questions ? (
