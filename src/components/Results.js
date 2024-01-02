@@ -10,28 +10,6 @@ const Results = ({ userAnswers, responseData }) => {
   // colour the questions depending on this combination
 
   return (
-    // <div>
-    //   <Card.Body>
-    //     {Object.keys(userAnswers).map((answerKey, index) => (
-    //       <div key={index}>{userAnswers[answerKey].toString()}</div>
-    //     ))}
-    //   </Card.Body>
-
-    //   <Card.Body>
-    //     {responseData.questions.map((questionData, index) => (
-    //       <div key={index}>
-    //         <Card.Title>Question {index + 1}:</Card.Title>
-    //         <Card className="m-2 p-2">
-    //           <Card.Title>{questionData.question}</Card.Title>
-    //           <Card.Text>{questionData.answers.correct}</Card.Text>
-    //         </Card>
-
-    //         {/* <p>Answers: {questionData.answers}</p> */}
-    //       </div>
-    //     ))}
-    //   </Card.Body>
-    // </div>
-
     <div>
       <Card.Body>
         <Card.Text>These were your answers:</Card.Text>
@@ -45,14 +23,16 @@ const Results = ({ userAnswers, responseData }) => {
 
       <Card.Body>
         <Card.Text>
-          The correct answers, with your incorrect answers in{" "}
+          Your correct answers are{" "}
+          <span style={{ color: "green", fontWeight: "bold" }}>GREEN</span>,
+          with your incorrect answers in{" "}
           <span style={{ color: "red", fontWeight: "bold" }}>RED</span>
         </Card.Text>
         {responseData.questions.map((questionData, index) => (
           <div key={index}>
             <Card.Title>Question {index + 1}:</Card.Title>
             <Card
-            // Use the index from previous .map() function for colour *
+              // Use the index from previous .map() function for colour *
               style={{ background: userAnswers[index] ? "lightgreen" : "pink" }}
               className="m-2 p-2"
             >
