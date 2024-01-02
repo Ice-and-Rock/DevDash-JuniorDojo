@@ -55,7 +55,10 @@ Overall goals
         - what an achievement!! ⭐️
     **next...**
     - Install the new package I build and add it to the Test component
+    **
     - Didn't work ❌
         - Check the compatability of the new game with React 
         - Might need to check exports and JSX if using the new package as a JSX !!
+        - Damn near spent 5 hours trying to work out whats wrong. I needed to create the npm package as a React App. I just don't have the time to go back through all of this to make it work. Another time, maybe!
+    **
 
