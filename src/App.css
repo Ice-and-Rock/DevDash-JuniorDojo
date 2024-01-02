@@ -49,6 +49,13 @@
   font-weight: bold;
   margin-bottom: 20px;
 }
+.confetti-pointer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none; 
+  z-index: -100; 
+}
 .topic-section {
   background-color: lightgrey;
   border-radius: 10px;

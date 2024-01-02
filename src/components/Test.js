@@ -9,6 +9,7 @@ import Spinner from "react-bootstrap/Spinner";
 import useOpenAIChat from "../openAI/useOpenAIChat";
 import ShowScore from "./ShowScore";
 import ShuffledAnswers from "./ShuffleAnswers";
+import ConfettiPointer from "./ConfettiPointer";
 
 const Test = ({ subject }) => {
   const [responseData, loading] = useOpenAIChat(subject);
@@ -88,7 +89,7 @@ const Test = ({ subject }) => {
             and unique!{" "}
           </p>
           <div>
-            {/* Game goes here! */}
+            <ConfettiPointer />
           </div>
         </div>
       ) : responseData && responseData.questions ? (

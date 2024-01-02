@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import  topics  from '../data/topics'
 import Footer from "./Footer";
+import ConfettiPointer from "./ConfettiPointer";
 
 const HomePage = () => {
   console.log(`
@@ -15,9 +16,13 @@ const HomePage = () => {
    '----------------------'
 `);
 
+
+
+
   console.log("homescreen running");
   return (
     <Container className="text-center mt-5">
+    <ConfettiPointer className="confetti-pointer" numberOfPieces={50} gravity={0.05} wind={0.02} />
       <h1 className="app-title">Dev Dash: Junior Dojo</h1>
       <h3 className="app-subtitle">Master Your Coding Skills</h3>     
       <p className="app-description">
