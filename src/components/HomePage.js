@@ -5,6 +5,16 @@ import  topics  from '../data/topics'
 import Footer from "./Footer";
 
 const HomePage = () => {
+  console.log(`
+  Welcome, Developers! 🚀
+   .----------------------.
+  |                      |
+  |   Happy Coding!      |
+  |   ⚡️ from Nick ⚡️      |
+  |                      |
+   '----------------------'
+`);
+
   console.log("homescreen running");
   return (
     <Container className="text-center mt-5">
