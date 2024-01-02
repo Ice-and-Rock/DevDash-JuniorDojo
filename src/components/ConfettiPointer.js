@@ -5,7 +5,7 @@ import Confetti from 'react-confetti';
 // zIndex doesn't work!
 // - use this site to see Docs: https://www.npmjs.com/package/react-dom-confetti
 
-const ConfettiPointer = ({ active, numberOfPieces, gravity, wind, zIndex }) => {
+const ConfettiPointer = ({ active, numberOfPieces, gravity, wind }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const ConfettiPointer = ({ active, numberOfPieces, gravity, wind, zIndex }) => {
       numberOfPieces={numberOfPieces || 100}
       gravity={gravity || 0.1}
       wind={wind || 0.05}
-      zIndex={zIndex || 1}
+      // zIndex={zIndex || 1}
     />
   );
 };

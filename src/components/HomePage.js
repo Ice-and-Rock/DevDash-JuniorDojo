@@ -22,7 +22,7 @@ const HomePage = () => {
   console.log("homescreen running");
   return (
     <Container className="text-center mt-5">
-    <ConfettiPointer className="confetti-pointer" numberOfPieces={50} gravity={0.05} wind={0.02} zIndex={-1000}/>
+    <ConfettiPointer className="confetti-pointer" numberOfPieces={50} gravity={0.05} wind={0.02} />
       <h1 className="app-title">Dev Dash: Junior Dojo</h1>
       <h3 className="app-subtitle">Master Your Coding Skills</h3>     
       <p className="app-description">
