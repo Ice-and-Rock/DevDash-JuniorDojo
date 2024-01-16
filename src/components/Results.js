@@ -37,6 +37,7 @@ const Results = ({ userAnswers, responseData }) => {
               className="m-2 p-2"
             >
               <Card.Title>{questionData.question}</Card.Title>
+              <Card.Text>Correct Answer:</Card.Text>
               <Card.Text>{questionData.answers.correct}</Card.Text>
             </Card>
           </div>
