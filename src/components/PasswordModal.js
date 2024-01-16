@@ -25,8 +25,15 @@ const PasswordModal = ({ showModal, handleClose, grantAccess }) => {
         }
       };
 
+      const handleKeyDown = (e) => {
+        // Close the modal when the user presses "Enter" on the last input field
+        if (e.key === 'Enter' && e.target.tagName.toLowerCase() === 'input') {
+          handleEnterClick();
+        }
+      };
+
     return (
-      <Modal show={showModal} onHide={handleClose}>
+      <Modal show={showModal} onHide={handleClose} onKeyDown={handleKeyDown}>
       
         <Modal.Header closeButton>
           <Modal.Title>Authentication</Modal.Title>
@@ -40,6 +47,7 @@ const PasswordModal = ({ showModal, handleClose, grantAccess }) => {
               type="password"
               value={password}
               onChange={handlePasswordChange}
+              
             />
           </Form.Group>
           </Form>
