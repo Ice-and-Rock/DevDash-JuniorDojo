@@ -8,7 +8,7 @@ const OpenAIChat = (subject) => {
 
   useEffect(() => {
     const openai = new OpenAI({ apiKey: openAIKey2, dangerouslyAllowBrowser: true, });
-    console.log("useOpenAIChat running")
+    console.log("useOpenAIChat running - local API key updated in Netlify")
 
     const fetchData = async () => {
       try {
